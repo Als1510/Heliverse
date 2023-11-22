@@ -52,6 +52,7 @@ export class UsersComponent implements OnInit {
       const teamDomains = new Set(this.team.map((teamUser: any) => teamUser.domain.toLowerCase()));
       this.filteredUser = this.filteredUser.filter((user: any) => !teamDomains.has(user.domain.toLowerCase()));
       this.filteredUser = this.filteredUser.concat(this.team);
+      this.filteredUser.reverse();
     }
 
     if (this.selectedDomain !== 'all') {
