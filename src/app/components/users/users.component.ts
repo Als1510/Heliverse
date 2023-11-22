@@ -118,6 +118,7 @@ export class UsersComponent implements OnInit {
       }
     })
     this.team = [];
+    this.clearFilters();
   }
 
   save() {
