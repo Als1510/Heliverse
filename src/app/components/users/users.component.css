@@ -34,7 +34,7 @@
 .content {
   margin: 1rem 0;
   display: grid;
-  grid-template-columns: repeat(auto-fill, 250px);
+  grid-template-columns: repeat(auto-fill, 300px);
   justify-content: center;
   grid-gap: 1.5rem;
 }
