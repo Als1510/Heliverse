@@ -1,0 +1,16 @@
+<div class="container">
+  <div class="upper-bar">
+    <div class="back" (click)="back()">
+    </div>
+    <h2>Team</h2>
+  </div>
+  <div class="content">
+    <div *ngFor="let user of users" class="user">
+      <h3>{{user.first_name}} {{user.last_name}}</h3>
+      <p>{{user.email}}</p>
+      <p>{{user.gender}}</p>
+      <p> <span class="tag">Domain: </span> {{user.domain}}</p>
+      <p><span class="tag">Availability: </span> {{user.available ? 'Yes' : 'No'}}</p>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,57 @@
+<div class="container">
+  <div class="upper-bar">
+    <input type="text" placeholder="Search By Name" [(ngModel)]="searchText" (input)="filterUsers()" class="searchbox">
+    <div class="left">
+      <select [(ngModel)]="selectedGender" class="dropdown" (change)="filterUsers()">
+        <option value="all">All</option>
+        <option value="male">Male</option>
+        <option value="female">Female</option>
+        <option value="agender">Agender</option>
+        <option value="bigender">Bigender</option>
+        <option value="polygender">Polygender</option>
+        <option value="nonbinary">Non-binary</option>
+        <option value="genderfluid">Genderfluid</option>
+        <option value="genderqueer">Genderqueer</option>
+      </select>
+      <select [(ngModel)]="selectedDomain" class="dropdown" (change)="filterUsers()">
+        <option value="all">All Department</option>
+        <option value="it">IT</option>
+        <option value="business development">Business Development</option>
+        <option value="management">Management</option>
+        <option value="sales">Sales</option>
+        <option value="marketing">Marketing</option>
+        <option value="finanace">Finance</option>
+        <option value="ui designing">UI Designing</option>
+      </select>
+      <select [(ngModel)]="selectedAvailability" class="dropdown" (change)="filterUsers()">
+        <option value="all">All</option>
+        <option value="yes">Yes</option>
+        <option value="no">No</option>
+      </select>
+    </div>
+  </div>
+  <div class="middle btn">
+    <button (click)="createTeam()">Create Team</button>
+    <button (click)="clearFilters()">Clear filters</button>
+  </div>
+  <div class="content">
+    <div *ngFor="let user of users" class="user" (click)="addToTeam(user)"
+      [ngClass]="{'user-selected': user.isSelected}">
+      <h3>{{user.first_name}} {{user.last_name}}</h3>
+      <p>{{user.email}}</p>
+      <p>{{user.gender}}</p>
+      <p> <span class="tag">Domain: </span> {{user.domain}}</p>
+      <p><span class="tag">Availability: </span> {{user.available ? 'Yes' : 'No'}}</p>
+    </div>
+  </div>
+  <div class="btn footer">
+    <button (click)="onPageChange(currentPage - 1)" [disabled]="currentPage === 1">Previous</button>
+    <span>Page {{ currentPage }}</span>
+    <button (click)="onPageChange(currentPage + 1)" [disabled]="disableNextButton">Next</button>
+  </div>
+
+  <div class="team btn" *ngIf="selectTeam">
+    <button (click)="cancel()">Cancel</button>
+    <button (click)="save()">Save</button>
+  </div>
+</div>
